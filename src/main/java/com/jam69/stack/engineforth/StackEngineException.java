@@ -1,4 +1,4 @@
-package com.jam69.stack.inprogress;
+package com.jam69.stack.engineforth;
 
 @SuppressWarnings("serial")
 public class StackEngineException extends RuntimeException{
