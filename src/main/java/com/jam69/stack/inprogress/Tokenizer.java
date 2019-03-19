@@ -4,7 +4,7 @@ public class Tokenizer{
 	
 	
 
-	private static final String NumPattern="[0-9]+";
+	private static final String NumPattern="-?[0-9]+";
 	private static final String StrPattern="[\"'].*[\"']";
 	
 	

@@ -19,9 +19,6 @@ public class StackEngine2 extends StackEngine {
 		
 	/**
 	 * (n -- )  Y pinta por la pantalla n
-	 * 
-	 * @author jamartinm
-	 *
 	 */
 	class Dot implements Operator {
 		public void process(Context ctx) {
@@ -33,9 +30,6 @@ public class StackEngine2 extends StackEngine {
 
 	/**
 	 * (n1 n2 -- n2 n1)
-	 *  
-	 * @author jamartinm
-	 *
 	 */
 	class Swap implements Operator {
 		public void process(Context ctx) {
@@ -48,8 +42,6 @@ public class StackEngine2 extends StackEngine {
 	
 	/**
 	 * (n -- n n)
-	 * 
-	 *
 	 */
 	class Dup implements Operator {
 		public void process(Context ctx) {

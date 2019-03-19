@@ -11,7 +11,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import jdk.jfr.events.ThrowablesEvent;
 
 
 interface Context {
@@ -20,7 +19,6 @@ interface Context {
 }
 
 interface IWord {
-	public void compile(Context ctx);
 	public void process(Context ctx);
 }
 abstract class Word {
