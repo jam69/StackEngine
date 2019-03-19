@@ -5,6 +5,10 @@ package com.jam69.stack.engineforth;
 
 
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -1339,6 +1343,17 @@ public class ForthEngine implements Context {
 		
 	}
 	
+	public Object interpret(File file) throws StackEngineException, IOException  {
+		BufferedReader br=new BufferedReader(new FileReader(file));
+		String line;
+		Object obj=null;
+		while( (line=br.readLine())!=null) {
+			obj=interpret(line);
+		}
+		br.close();
+		return obj;
+	}
+	
 
 	
 	public boolean process(List<Word> rutina)   {
@@ -1355,6 +1370,18 @@ public class ForthEngine implements Context {
 	public static void main(String[] args) throws StackEngineException {
 		
 		ForthEngine scp =new ForthEngine();
+		
+		if(args.length==1) {
+			try {
+				scp.interpret(new File(args[0]));
+				return;
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return;
+		}
+		
 		scp.interpret(" 'dos' " );
 		scp.interpret(" 1 2 + " );
 		scp.interpret(" 1 2 = " );
@@ -1408,11 +1435,6 @@ public class ForthEngine implements Context {
 		scp.interpret(" limits 3 + . ");
 		
 	}
-
-
-
-
-
 
 
 }

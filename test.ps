@@ -1,0 +1,21 @@
+ 
+% Programa de prueba 
+
+ 'dos'  ==  % un comentario {
+ 1 2 add  ==
+ 1 2 eq  ==
+		 true { 'iguales' } if  ==
+		 false { 'iguales' } if  ==
+		 true { true { 'otro' } if } if  ==
+		 1 1 eq { 'iguales' } { 'distintos' } ifelse  ==
+		 1 2 eq { 'iguales' } { 'distintos' } ifelse ==
+		 1 dup 5 lt  { 3 lt 
+				         { 'menor3' } 
+				         { 'entre 3 y 5 '  } 
+				         ifelse 
+				      }  
+				      { 'mayor 5' }  
+				      ifelse  ==
+		  /mas2 { 2 add } def  % definimos +2
+		  3 mas2 ==
+		  5 mas2 ==

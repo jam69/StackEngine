@@ -1,6 +1,6 @@
-package com.jam69.stack.engineforth;
+package com.jam69.stack.engineps;
 
-public class Tokenizer{
+public class TokenizerString implements Tokenizer {
 	
 	
 
@@ -8,19 +8,19 @@ public class Tokenizer{
 	private static final String StrPattern="[\"'].*[\"']";
 	
 	
-	
 	String txt;
 	int p;
 	String token;
 	
 	
-	public Tokenizer(String s){
+	public TokenizerString(String s){
 		txt=s;
 		p=0;
 	}
 	
-	protected Token nextToken() {
+	public Token nextToken() {
 		String v= next();
+//		System.out.println("NextToken:<"+v+">");
 		if(v==null) {
 			return new Token(Token.Type.EOF,null);
 		}
@@ -30,6 +30,9 @@ public class Tokenizer{
 		if(v.matches(StrPattern)) {
 			return new Token(Token.Type.STR,v.substring(1, v.length()-1));
 		}
+		if(v.startsWith("/")) {
+			return new Token(Token.Type.STR,v.substring(1));
+		}
 		return new Token(Token.Type.WORD,v);
 	}
 	
@@ -38,14 +41,17 @@ public class Tokenizer{
 		
 		while(p<txt.length()) {
 			char c = txt.charAt(p);
-			if(c=='(') {
+			if(c=='%') {
 				leeHasta('\n');
-			}else if(Character.isWhitespace(c)) {
+			}
+			if(Character.isWhitespace(c)) {
 				p++;
 			}else if(c=='\'') {
 				return leeHasta('\'');
 			}else if(c=='"') {
 				return leeHasta('"');
+			}else if(c=='/') {
+				return leeHastaBlanco();
 			}else {
 				// if '(' lee hasta fin de linea e ignoralo
 				return leeHastaBlanco();
